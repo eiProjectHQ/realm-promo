@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Realm of the Twelve: for parents</title>
+<!--
+  Realm of the Twelve: the parent panel (Version 2, deliverable 3; brief A2.7).
+
+  This page lives in its own repository (eiProjectHQ/realm-promo) at https://realmpromo.eiprojecthq.com/.
+  The game shows it in a frame on the parents' note and on the For Parents page, 720 pixels wide and 360 high.
+  Change this page whenever you like: the game never needs to change.
+
+  Rules from the brief, which the game relies on:
+  - Display only. The game's frame stops this page from reading or changing the game or any save.
+  - Every link opens in a new tab, never inside the game. The <base target="_blank"> line below does that for every
+    link on the page; keep it.
+  - No third-party advertising or tracking: no analytics, ad, social-media or other outside scripts, ever.
+  - Parents sign up for news on a separate page this panel links to, never inside the game (so no forms here).
+  - Keep the short script at the bottom. It tells the game the page has loaded; until then the game shows the
+    panel's space as empty parchment, so a page that fails to load never shows an error inside the game.
+
+  To edit: change the words between the tags marked EDIT, and the addresses in href="...". Upload the file to the
+  realm-promo repository as index.html (Add file > Upload files > Commit changes); it is live a minute or two later.
+-->
+<base target="_blank">
+<style>
+  /* Transparent, so the game's own parchment shows through. Opened on its own, the page has a parchment colour. */
+  html, body { margin: 0; height: 100%; background: transparent; }
+  html.standalone { background: #f6e7c4; }
+  body { box-sizing: border-box; padding: 22px 30px; font-family: "Segoe UI", system-ui, Arial, sans-serif; color: #3d2c18; }
+  .panel { height: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; }
+  .item { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+  .item + .item { padding-left: 30px; border-left: 2px solid rgba(185, 134, 42, .5); }
+  h2 { margin: 0; font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif; font-size: 25px; line-height: 1.2; color: #13245a; }
+  p { margin: 0; font-size: 17px; line-height: 1.5; }
+  a.button { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px;
+    border-radius: 10px; font-size: 17px; font-weight: 600; text-decoration: none; }
+  a.button:focus-visible { outline: 3px solid #1f3d9b; outline-offset: 3px; }
+  a.quiet { border: 2px solid #7c1f2d; color: #7c1f2d; }
+  a.quiet:hover { background: rgba(124, 31, 45, .07); }
+  a.bold { background: #1f3d9b; color: #ffffff; border: 2px solid #1f3d9b; }
+  a.bold:hover { background: #13245a; border-color: #13245a; }
+  a.button svg { flex: none; }
+  /* a narrow window (the page opened on a phone, say): one column */
+  @media (max-width: 560px) {
+    .panel { grid-template-columns: 1fr; gap: 22px; height: auto; }
+    .item + .item { padding-left: 0; border-left: 0; padding-top: 22px; border-top: 2px solid rgba(185, 134, 42, .5); }
+  }
+</style>
+</head>
+<body>
+<main class="panel">
+
+  <section class="item">
+    <!-- EDIT: the first message -->
+    <h2>Realm of the Twelve is free to play</h2>
+    <p>If your child enjoys it, you can say thanks with a donation to [KOALA SANCTUARY NAME].</p>
+    <!-- EDIT: the sanctuary's donation page goes in href -->
+    <a class="button quiet" href="https://eiprojecthq.com" rel="noopener">Donate to the sanctuary
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </section>
+
+  <section class="item">
+    <!-- EDIT: the second message -->
+    <h2>Coming soon: Five Minute Builds</h2>
+    <p>Five-minute creativity challenges for the whole family, judged by AI. Bricks, play dough, drawings: anything goes.</p>
+    <!-- EDIT: the sign-up page for news goes in href -->
+    <a class="button bold" href="https://eiprojecthq.com" rel="noopener">Tell me when it launches
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </section>
+
+</main>
+<script>
+  // Keep this script. Inside the game: tell the game the page has loaded, so it shows the panel.
+  // Opened on its own: give the page its parchment colour.
+  if (window.parent !== window) window.parent.postMessage("realm-panel-ready", "*");
+  else document.documentElement.classList.add("standalone");
+</script>
+</body>
+</html>
